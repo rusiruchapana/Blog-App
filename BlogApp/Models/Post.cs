@@ -6,6 +6,7 @@ namespace BlogApp.Models;
 public class Post
 {
     [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
     
     [Required]
@@ -21,4 +22,5 @@ public class Post
     
     
     public ICollection<Comment> Comments { get; set; }
+    
 }

@@ -11,5 +11,6 @@ public class AutoMapperProfile: Profile
     {
         CreateMap<PostRequestDto , Post>();
         CreateMap<Post , PostResponseDto>();
+        
     }
 }

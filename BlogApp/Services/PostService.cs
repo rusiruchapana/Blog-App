@@ -29,4 +29,18 @@ public class PostService: IPostService
         PostResponseDto postResponseDto = await _postRepository.CreatePost(post);
         return postResponseDto;
     }
+
+    public async Task<List<PostResponseDto>> GetAllPosts()
+    {
+        List<Post> posts = await _postRepository.GetAllPosts();
+        List<PostResponseDto> postResponseDtos = _mapper.Map<List<PostResponseDto>>(posts);
+        return postResponseDtos;
+    }
+
+    public async Task<PostResponseDto> GetPostById(int id)
+    {
+        Post post = await _postRepository.GetPostById(id);
+        PostResponseDto postResponseDto = _mapper.Map<PostResponseDto>(post);
+        return postResponseDto;
+    }
 }

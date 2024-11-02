@@ -4,6 +4,7 @@ using BlogApp.Dto.Request;
 using BlogApp.Dto.Response;
 using BlogApp.Models;
 using BlogApp.Repositories.Interface;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlogApp.Repositories;
 
@@ -27,5 +28,17 @@ public class PostRepository: IPostRepository
 
         PostResponseDto postResponseDto = _mapper.Map<PostResponseDto>(post);
         return postResponseDto;
+    }
+
+    public async Task<List<Post>> GetAllPosts()
+    {
+        List<Post> posts =  await _context.Posts.ToListAsync();
+        return posts;
+    }
+
+    public async Task<Post> GetPostById(int id)
+    {
+        Post post = await _context.Posts.Include(p=> p.Comments).FirstOrDefaultAsync(p => p.Id == id);
+        return post;
     }
 }

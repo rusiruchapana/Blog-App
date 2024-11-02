@@ -7,4 +7,8 @@ namespace BlogApp.Repositories.Interface;
 public interface IPostRepository
 {
     Task<PostResponseDto> CreatePost(Post post);
+
+    Task<List<Post>> GetAllPosts();
+
+    Task<Post> GetPostById(int id);
 }

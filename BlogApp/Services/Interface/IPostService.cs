@@ -6,4 +6,7 @@ namespace BlogApp.Services.Interface;
 public interface IPostService
 {
     Task<PostResponseDto> CreatePost(PostRequestDto postRequestDto);
+
+    Task<List<PostResponseDto>> GetAllPosts();
+    Task<PostResponseDto> GetPostById(int id);
 }

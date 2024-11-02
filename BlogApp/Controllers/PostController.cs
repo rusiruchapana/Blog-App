@@ -30,9 +30,22 @@ public class PostController: ControllerBase
         PostResponseDto postResponseDto = await _postService.CreatePost(postRequestDto);
         return Ok(postResponseDto);
     }
-    
-    
-    
+
+    //GET ALL Rest API.
+    [HttpGet]
+    public async Task<IActionResult> GetAllPosts()
+    {
+        List<PostResponseDto> postResponseDtos = await _postService.GetAllPosts();
+        return Ok(postResponseDtos);
+    }
+
+    //GET BY ID Rest API.
+    [HttpGet("id")]
+    public async Task<IActionResult> GetPostById(int id)
+    {
+        PostResponseDto postResponseDto = await _postService.GetPostById(id);
+        return Ok(postResponseDto);
+    }
 
 
 }

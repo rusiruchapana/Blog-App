@@ -12,4 +12,6 @@ public interface IPostRepository
 
     Task<Post> GetPostById(int id);
     Task<Post> Update(Post post);
+
+    Task DeletePost(Post deletedPost);
 }

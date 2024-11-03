@@ -55,4 +55,15 @@ public class PostController: ControllerBase
         return Ok(postResponseDto);
     }
 
+    //DELETE Rest API.
+    [HttpDelete]
+    public async Task<IActionResult> DeletePost(int id)
+    {
+        bool check = await _postService.DeletePost(id);
+        if (check == false)
+            return BadRequest("There is no post with the provided Id.");
+        else
+            return Ok("Post has been deleted.");
+    }
+
 }

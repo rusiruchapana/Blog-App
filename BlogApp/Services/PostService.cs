@@ -54,4 +54,17 @@ public class PostService: IPostService
         PostResponseDto postResponseDto = _mapper.Map<PostResponseDto>(savedPost);    
         return postResponseDto;
     }
+
+    public async Task<bool> DeletePost(int id)
+    {
+        Post post = await _postRepository.GetPostById(id);
+        if (post == null)
+            return false;
+        else
+        {
+            Post deletedPost = await _postRepository.GetPostById(id);
+            await _postRepository.DeletePost(deletedPost);
+            return true;
+        }
+    }
 }

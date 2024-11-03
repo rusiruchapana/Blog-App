@@ -1,9 +1,11 @@
+using BlogApp.Dto.Request;
+using BlogApp.Dto.Response;
 using BlogApp.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlogApp.Controllers;
 
-[Microsoft.AspNetCore.Components.Route("api/[controller]")]
+[Route("api/[controller]")]
 [ApiController]
 public class CommentController: ControllerBase
 {
@@ -14,5 +16,13 @@ public class CommentController: ControllerBase
         _commentService = commentService;
     }
     
-    
+    //POST Rest API.
+    [HttpPost]
+    public async Task<IActionResult> CreateComment(CommentRequestDto commentRequestDto)
+    {
+        CommentResponseDto commentResponseDto = await _commentService.CreateComment(commentRequestDto);
+        return Ok(commentResponseDto);
+    }
+
+
 }

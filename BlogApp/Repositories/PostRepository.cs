@@ -32,7 +32,7 @@ public class PostRepository: IPostRepository
 
     public async Task<List<Post>> GetAllPosts()
     {
-        List<Post> posts =  await _context.Posts.ToListAsync();
+        List<Post> posts = await _context.Posts.Include(p => p.Comments).ToListAsync();
         return posts;
     }
 

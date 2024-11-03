@@ -4,7 +4,7 @@ using BlogApp.Models;
 
 namespace BlogApp.Dto.Response;
 
-public class CommentResponse
+public class CommentResponseDto
 {
     public int Id { get; set; }
     public string Author { get; set; }

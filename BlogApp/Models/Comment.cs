@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace BlogApp.Models;
 
@@ -17,9 +18,9 @@ public class Comment
     [StringLength(500)]
     public string Content { get; set; }
     
-    [ForeignKey("Post")]
+    [ForeignKey("RelatedPost")]
     public int PostId { get; set; }
     
-    
-    public Post Post { get; set; }
+    [JsonIgnore]
+    public Post RelatedPost { get; set; }
 }

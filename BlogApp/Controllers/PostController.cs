@@ -46,6 +46,13 @@ public class PostController: ControllerBase
         PostResponseDto postResponseDto = await _postService.GetPostById(id);
         return Ok(postResponseDto);
     }
-
+    
+    //UPDATE Rest API.
+    [HttpPut]
+    public async Task<IActionResult> UpdatePost(int id , [FromBody] PostRequestDto postRequestDto)
+    {
+        PostResponseDto postResponseDto = await _postService.UpdatePost(id, postRequestDto);
+        return Ok(postResponseDto);
+    }
 
 }

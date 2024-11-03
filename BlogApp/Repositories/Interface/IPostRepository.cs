@@ -11,4 +11,5 @@ public interface IPostRepository
     Task<List<Post>> GetAllPosts();
 
     Task<Post> GetPostById(int id);
+    Task<Post> Update(Post post);
 }

@@ -41,4 +41,11 @@ public class PostRepository: IPostRepository
         Post post = await _context.Posts.Include(p=> p.Comments).FirstOrDefaultAsync(p => p.Id == id);
         return post;
     }
+
+    public async Task<Post> Update(Post post)
+    {
+        _context.Posts.Update(post);
+        await _context.SaveChangesAsync();
+        return post;
+    }
 }

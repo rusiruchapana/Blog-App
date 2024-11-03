@@ -1,3 +1,4 @@
+using BlogApp.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlogApp.Controllers;
@@ -6,5 +7,12 @@ namespace BlogApp.Controllers;
 [ApiController]
 public class CommentController: ControllerBase
 {
+    //DI
+    private readonly ICommentService _commentService;
+    public CommentController(ICommentService commentService)
+    {
+        _commentService = commentService;
+    }
+    
     
 }

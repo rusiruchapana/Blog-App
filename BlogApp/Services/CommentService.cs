@@ -2,6 +2,7 @@ using AutoMapper;
 using BlogApp.Dto.Request;
 using BlogApp.Dto.Response;
 using BlogApp.Models;
+using BlogApp.Repositories;
 using BlogApp.Repositories.Interface;
 using BlogApp.Services.Interface;
 
@@ -27,4 +28,20 @@ public class CommentService: ICommentService
         
         return commentResponseDto;
     }
+
+    public async Task<List<CommentResponseDto>> GetAllComments()
+    {
+        List<Comment> comments = await _commentRepository.GetAllComments();
+        List<CommentResponseDto> commentResponseDtos = _mapper.Map<List<CommentResponseDto>>(comments);
+        return commentResponseDtos;
+    }
+
+    public async Task<CommentResponseDto> GetCommentById(int id)
+    {
+        Comment comment = await _commentRepository.GetCommentById(id);
+        CommentResponseDto commentResponseDto = _mapper.Map<CommentResponseDto>(comment);
+        return commentResponseDto;
+    }
+
+   
 }

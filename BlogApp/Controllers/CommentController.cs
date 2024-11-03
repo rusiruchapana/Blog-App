@@ -24,5 +24,21 @@ public class CommentController: ControllerBase
         return Ok(commentResponseDto);
     }
 
+    //GET Rest API.
+    [HttpGet]
+    public async Task<IActionResult> GetAllComments()
+    {
+        List<CommentResponseDto> commentResponseDtos = await _commentService.GetAllComments();
+        return Ok(commentResponseDtos);
+    }
+
+    //GET Rest API to get unique comment.
+    [HttpGet("id")]
+    public async Task<IActionResult> GetCommentById(int id)
+    {
+        CommentResponseDto commentResponseDto = await _commentService.GetCommentById(id);
+        return Ok(commentResponseDto);
+    }
+
 
 }

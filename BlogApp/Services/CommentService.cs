@@ -1,6 +1,8 @@
+using BlogApp.Services.Interface;
+
 namespace BlogApp.Services;
 
-public class CommentService
+public class CommentService: ICommentService
 {
     
 }

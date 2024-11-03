@@ -1,6 +1,8 @@
+using BlogApp.Repositories.Interface;
+
 namespace BlogApp.Repositories;
 
-public class CommentRepository
+public class CommentRepository: ICommentRepository
 {
     
 }

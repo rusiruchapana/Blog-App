@@ -1,7 +1,10 @@
+using Microsoft.AspNetCore.Mvc;
+
 namespace BlogApp.Controllers;
 
-
-public class CommentController
+[Microsoft.AspNetCore.Components.Route("api/[controller]")]
+[ApiController]
+public class CommentController: ControllerBase
 {
     
 }

@@ -28,11 +28,27 @@ public class CommentRepository: ICommentRepository
         return comments;
     }
 
+    
+
     public async Task<Comment> GetCommentById(int id)
     {
         Comment comment = await _context.Comments.FindAsync(id);
         return comment;
     }
 
+    public async Task<bool> DeleteComment(int id)
+    {
+        Comment comment = await _context.Comments.FindAsync(id);
+        if (comment == null)
+            return false;
+        else
+        {
+            _context.Comments.Remove(comment);  
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        
+    }
     
 }

@@ -39,6 +39,16 @@ public class CommentController: ControllerBase
         CommentResponseDto commentResponseDto = await _commentService.GetCommentById(id);
         return Ok(commentResponseDto);
     }
-
+    
+    //DELETE Rest API.
+    [HttpDelete]
+    public async Task<IActionResult> DeleteComment(int id)
+    {
+        bool check = await _commentService.DeleteComment(id);
+        if (check == false)
+            return BadRequest("Comment not found");
+        else
+            return Ok("Comment deleted");
+    }
 
 }

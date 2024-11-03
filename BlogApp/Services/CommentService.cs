@@ -35,6 +35,7 @@ public class CommentService: ICommentService
         List<CommentResponseDto> commentResponseDtos = _mapper.Map<List<CommentResponseDto>>(comments);
         return commentResponseDtos;
     }
+    
 
     public async Task<CommentResponseDto> GetCommentById(int id)
     {
@@ -43,5 +44,10 @@ public class CommentService: ICommentService
         return commentResponseDto;
     }
 
+    public async Task<bool> DeleteComment(int id)
+    {
+        bool check = await _commentRepository.DeleteComment(id);
+        return check;
+    }
    
 }

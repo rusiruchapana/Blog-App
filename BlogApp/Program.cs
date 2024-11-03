@@ -13,9 +13,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//Add services.
 builder.Services.AddControllers();
 builder.Services.AddScoped<IPostService , PostService>();
 builder.Services.AddScoped<IPostRepository , PostRepository>();
+builder.Services.AddScoped<ICommentService , CommentService>();
+builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>

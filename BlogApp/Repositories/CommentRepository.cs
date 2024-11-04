@@ -1,7 +1,9 @@
 using BlogApp.Data;
+using BlogApp.Dto.Request;
 using BlogApp.Models;
 using BlogApp.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace BlogApp.Repositories;
 
@@ -50,5 +52,17 @@ public class CommentRepository: ICommentRepository
 
         
     }
-    
+
+    public async Task<Comment> UpdateComment(int id, CommentRequestDto commentRequestDto, int postId)
+    {
+        Comment comment = await _context.Comments.FindAsync(id);
+        comment.Author = commentRequestDto.Author;
+        comment.Content = commentRequestDto.Content;
+        comment.PostId = postId;
+
+        _context.Comments.Update(comment);
+        await _context.SaveChangesAsync();
+        
+        return comment;
+    }
 }

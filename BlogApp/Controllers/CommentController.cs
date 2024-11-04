@@ -39,6 +39,16 @@ public class CommentController: ControllerBase
         CommentResponseDto commentResponseDto = await _commentService.GetCommentById(id);
         return Ok(commentResponseDto);
     }
+
+    
+    //UPDATE Rest API.
+    [HttpPut]
+    public async Task<IActionResult> UpdateComment(int id , CommentRequestDto commentRequestDto, int postId)
+    {
+        CommentResponseDto commentResponseDto = await _commentService.UpdateComment(id , commentRequestDto , postId);
+        return Ok(commentResponseDto);
+    }
+
     
     //DELETE Rest API.
     [HttpDelete]

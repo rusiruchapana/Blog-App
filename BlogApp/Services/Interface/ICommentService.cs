@@ -10,4 +10,5 @@ public interface ICommentService
     Task<CommentResponseDto> GetCommentById(int id);
     Task<List<CommentResponseDto>> GetAllComments();
     Task<bool> DeleteComment(int id);
+    Task<CommentResponseDto> UpdateComment(int id, CommentRequestDto commentRequestDto, int postId);
 }

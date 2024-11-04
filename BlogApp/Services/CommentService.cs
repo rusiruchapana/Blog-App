@@ -49,5 +49,11 @@ public class CommentService: ICommentService
         bool check = await _commentRepository.DeleteComment(id);
         return check;
     }
-   
+
+    public async Task<CommentResponseDto> UpdateComment(int id, CommentRequestDto commentRequestDto, int postId)
+    {
+        Comment comment = await _commentRepository.UpdateComment(id, commentRequestDto, postId);
+        CommentResponseDto commentResponseDto = _mapper.Map<CommentResponseDto>(comment);
+        return commentResponseDto;
+    }
 }
